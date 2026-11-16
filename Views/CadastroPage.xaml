@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:CadastroEventos.Models"
+             x:Class="CadastroEventos.Views.CadastroPage"
+             x:DataType="models:Evento"
+             Title="Cadastro">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,24" Spacing="16" MaximumWidthRequest="620">
+            <Label Text="Cadastro de eventos" Style="{StaticResource Titulo}"
+                   SemanticProperties.HeadingLevel="Level1" />
+            <Border Style="{StaticResource Cartao}">
+                <VerticalStackLayout Spacing="12">
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Nome do evento" Style="{StaticResource Campo}" />
+                        <Entry Text="{Binding Nome, Mode=TwoWay}" Placeholder="Ex.: Feira de Tecnologia"
+                               MaxLength="120" SemanticProperties.Description="Nome do evento" />
+                    </VerticalStackLayout>
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="Início" Style="{StaticResource Campo}" />
+                            <DatePicker Date="{Binding DataInicio, Mode=TwoWay}" Format="dd/MM/yyyy"
+                                        SemanticProperties.Description="Data de início" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="5">
+                            <Label Text="Término" Style="{StaticResource Campo}" />
+                            <DatePicker Date="{Binding DataTermino, Mode=TwoWay}" Format="dd/MM/yyyy"
+                                        SemanticProperties.Description="Data de término" />
+                        </VerticalStackLayout>
+                    </Grid>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Número de participantes" Style="{StaticResource Campo}" />
+                        <Entry Text="{Binding ParticipantesDigitados, Mode=TwoWay}" Keyboard="Numeric"
+                               Placeholder="Ex.: 40" MaxLength="10"
+                               SemanticProperties.Description="Número de participantes" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Local do evento" Style="{StaticResource Campo}" />
+                        <Entry Text="{Binding Local, Mode=TwoWay}" Placeholder="Ex.: Auditório da Etec"
+                               MaxLength="160" SemanticProperties.Description="Local do evento" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Custo por participante (R$)" Style="{StaticResource Campo}" />
+                        <Entry Text="{Binding CustoDigitado, Mode=TwoWay}" Keyboard="Numeric"
+                               Placeholder="Ex.: 35,50" MaxLength="32"
+                               SemanticProperties.Description="Custo por participante em reais" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+            <Button x:Name="BotaoResumo" Text="Ver resumo" Clicked="AoVerResumo" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

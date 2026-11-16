@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:CadastroEventos.Models"
+             x:Class="CadastroEventos.Views.ResumoPage"
+             x:DataType="models:Evento"
+             Title="Resumo">
+    <ScrollView>
+        <VerticalStackLayout Padding="20,24" Spacing="16" MaximumWidthRequest="620">
+            <Label Text="Resumo do evento" Style="{StaticResource Titulo}"
+                   SemanticProperties.HeadingLevel="Level1" />
+            <Border Style="{StaticResource Cartao}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="{Binding Nome}" FontSize="22" FontAttributes="Bold"
+                           SemanticProperties.HeadingLevel="Level2" />
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Local" Style="{StaticResource Campo}" />
+                        <Label Text="{Binding Local}" />
+                    </VerticalStackLayout>
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Spacing="3">
+                            <Label Text="Início" Style="{StaticResource Campo}" />
+                            <Label Text="{Binding InicioFormatado}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3">
+                            <Label Text="Término" Style="{StaticResource Campo}" />
+                            <Label Text="{Binding TerminoFormatado}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Spacing="3">
+                            <Label Text="Duração" Style="{StaticResource Campo}" />
+                            <Label Text="{Binding DuracaoFormatada}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3">
+                            <Label Text="Participantes" Style="{StaticResource Campo}" />
+                            <Label Text="{Binding ParticipantesFormatados}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Custo por participante" Style="{StaticResource Campo}" />
+                        <Label Text="{Binding CustoUnitarioFormatado}" />
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Border>
+            <Border Style="{StaticResource Cartao}" BackgroundColor="#DDF4EA" Stroke="#ABD9C9">
+                <VerticalStackLayout Spacing="4">
+                    <Label Text="Custo total do evento" Style="{StaticResource Campo}" />
+                    <Label Text="{Binding CustoTotalFormatado}" FontSize="26" FontAttributes="Bold"
+                           TextColor="{StaticResource Verde}" />
+                </VerticalStackLayout>
+            </Border>
+            <Button x:Name="BotaoVoltar" Text="Voltar ao cadastro" Clicked="AoVoltar" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
